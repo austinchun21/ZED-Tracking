@@ -519,7 +519,8 @@ def main():
                             SHOW_UPDATE_PATCHES=SHOW_UPDATE_PATCHES)
 
     if(CNN.REALTIME):
-        print("Align yourself inside the box on the scren, then press ENTER...")
+        print("When ready, press ENTER, then align yourself with the green box.")
+        print("You will have 3 seconds before the initialization photo is captured.")
         while(not enter()):
             cv2.rectangle(CNN.bgrImg, (CNN.IMG_W//2-CNN.INIT_W//2, CNN.IMG_H//2-CNN.INIT_H//2), 
                                           (CNN.IMG_W//2+CNN.INIT_W//2, CNN.IMG_H//2+CNN.INIT_H//2),
@@ -527,8 +528,20 @@ def main():
             cv2.circle(CNN.bgrImg, (CNN.IMG_W//2, CNN.IMG_H//2), 3, color=(0,200,0), thickness=2)
             cv2.imshow("Starting Box", CNN.bgrImg)
             cv2.waitKey(1)
+            startTime = time()
+            now = time()
+        while(now - startTime < 3.0):
+            now = time()
+            cv2.rectangle(CNN.bgrImg, (CNN.IMG_W//2-CNN.INIT_W//2, CNN.IMG_H//2-CNN.INIT_H//2), 
+                                          (CNN.IMG_W//2+CNN.INIT_W//2, CNN.IMG_H//2+CNN.INIT_H//2),
+                                          color=(0,200,0), thickness=2)
+            cv2.circle(CNN.bgrImg, (CNN.IMG_W//2, CNN.IMG_H//2), 3, color=(0,200,0), thickness=2)
+            cv2.putText(CNN.bgrImg,str(round(now,1)),(CNN.IMG_W//4,CNN.IMG_H//4), FONT, 4 ,(0,255,0),2)
+            cv2.imshow("Starting Box", CNN.bgrImg)
+            cv2.waitKey(1)
 
-    print("Starting the CNN...")
+
+    print("  Starting the CNN...")
 
     # Train model on training set (IMG)
     CNN.trainCNN(index=0, epochs=EPOCHS, batch_size=BATCH_SIZE, SHOW_INIT_PATCHES=SHOW_INIT_PATCHES)
