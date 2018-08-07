@@ -1,0 +1,9 @@
+*.png
+*.jpg
+*.swp
+*.bin
+*.mp4
+*.pyc
+data/
+saved_models/
+__pycache__/
