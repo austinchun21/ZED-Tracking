@@ -8,11 +8,11 @@ human detection (and localization), along with a lightweight CNN that is trained
 on initialization to distinguish between the desired target, and other people.
 Algorithm publishes the Target's depth and angle to ROS topics.
 
-## Hardware Requirements
+### Hardware Requirements
 - Jetson TX2
 - ZED Depth Camera
 
-## Software Requirements
+### Software Requirements
 - JetPack 3.2 L4T-28.2.1 (CUDA 9.0, cuDNN 7.0.5)
 - TensorFlow
 - Keras
@@ -29,9 +29,9 @@ Algorithm publishes the Target's depth and angle to ROS topics.
     - In a terminal
         > roscore
     - In another terminal
-        > cd ~/jetsonbot
-        > source devel/setup.bash
-        > roslaunch zed_wrapper zed.launch
+        > cd ~/jetsonbot  
+        > source devel/setup.bash  
+        > roslaunch zed_wrapper zed.launch  
 - Run ZED Tracker Algorithm
     - In a new terminal, run python script
         > python ZED_Tracking_Algorithm.py
