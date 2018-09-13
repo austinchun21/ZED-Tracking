@@ -1,4 +1,5 @@
 # ZED-Tracking
+New Version, for webcam work
 Contract Project: ZED Human Tracking on Jetson TX2
 
 Client: Leo
